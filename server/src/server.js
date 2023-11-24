@@ -1,5 +1,7 @@
-const express = require("express");
-const mongoose = require("mongoose");
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const { PORT, DB_URL } = require("./constants");
 const routes = require("./router");
@@ -8,6 +10,8 @@ const app = express();
 
 //express config
 app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cors());
 
 // DB connection
 async function dbConnect() {

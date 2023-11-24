@@ -1,10 +1,10 @@
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Posts from "./components/Posts";
 import Create from "./components/Create";
 import Login from "./components/Login";
-import Register from "./components/Register";
+import Register from "./components/register/Register";
 import NotFound from "./components/NotFound";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
