@@ -3,7 +3,15 @@ const bcrypt = require("bcrypt");
 const jwt = require("../lib/jwt");
 const { SECRET } = require("../constants");
 
-exports.register = (userData) => User.create(userData);
+exports.register = async (userData) => {
+  const user = User.create(userData);
+
+  const payload = { _id: user._id, email: user.email };
+
+  const token = await jwt.sign(payload, SECRET, { expiresIn: "3d" });
+
+  return token;
+};
 
 exports.login = async (email, password) => {
   const user = await User.findOne({ email });

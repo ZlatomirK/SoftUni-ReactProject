@@ -1,18 +1,40 @@
 import "./reg.css";
 
+import { useContext } from "react";
+
+import AuthContext from "../../contexts/authContext";
+import useForm from "../../hooks/useForm";
+
+const RegisterFormKeys = {
+  Username: "userName",
+  Email: "email",
+  Password: "password",
+  ConfirmPassword: "confirmPassword",
+};
+
 const Register = () => {
+  const { registerSubmitHandler } = useContext(AuthContext);
+  const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
+    [RegisterFormKeys.Username]: "",
+    [RegisterFormKeys.Email]: "",
+    [RegisterFormKeys.Password]: "",
+    [RegisterFormKeys.ConfirmPassword]: "",
+  });
+
   return (
     <main>
-      <form method="POST" className="signupForm">
+      <form className="signupForm" onSubmit={onSubmit}>
         <h2>Sign Up</h2>
         <ul className="noBullet">
           <li>
-            <label htmlFor="userName">Last Name:</label>
+            <label htmlFor="userName">Username:</label>
             <input
               type="text"
               className="inputFields"
               id="userName"
               name="userName"
+              onChange={onChange}
+              values={values[RegisterFormKeys.Username]}
             />
           </li>
           <li>
@@ -22,6 +44,8 @@ const Register = () => {
               className="inputFields"
               id="email"
               name="email"
+              onChange={onChange}
+              values={values[RegisterFormKeys.Email]}
             />
           </li>
           <li>
@@ -31,19 +55,23 @@ const Register = () => {
               className="inputFields"
               id="password"
               name="password"
+              onChange={onChange}
+              values={values[RegisterFormKeys.Password]}
             />
           </li>
           <li>
-            <label htmlFor="repeat-password">Repeat-Password:</label>
+            <label htmlFor="confirmPassword">Repeat-Password:</label>
             <input
               type="password"
               className="inputFields"
-              id="repeat-password"
-              name="repeatPassword"
+              id="confirmPassword"
+              name="confirmPassword"
+              onChange={onChange}
+              values={values[RegisterFormKeys.ConfirmPassword]}
             />
           </li>
           <li id="center-btn">
-            <button id="join-btn">JOIN</button>
+            <button id="join-btn" type="submit">JOIN</button>
           </li>
         </ul>
       </form>
