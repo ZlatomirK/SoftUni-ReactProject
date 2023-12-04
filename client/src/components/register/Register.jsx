@@ -60,7 +60,7 @@ const Register = () => {
             />
           </li>
           <li>
-            <label htmlFor="confirmPassword">Repeat-Password:</label>
+            <label htmlFor="confirmPassword">Confirm-Password:</label>
             <input
               type="password"
               className="inputFields"

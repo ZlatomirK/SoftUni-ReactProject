@@ -3,12 +3,13 @@ import Footer from "./components/Footer";
 import Home from "./components/home/Home";
 import Posts from "./components/Posts";
 import Create from "./components/Create";
-import Login from "./components/Login";
+import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import NotFound from "./components/NotFound";
 
 import { Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/authContext";
+import Logout from "./components/logout/Logout";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/posts/create" element={<Create />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/logout" element={<Logout />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

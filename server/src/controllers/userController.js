@@ -38,24 +38,23 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// router.post("/login", async (req, res) => {
-//   const { email, password } = req.body;
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
 
-//   try {
-//     const token = await userService.login(email, password);
+  try {
+    const token = await userService.login(email, password);
 
-//     res.cookie("token", token, { httpOnly: true });
-//     // res.redirect("/");
-//   } catch (error) {
-//     const errorMessages = extractErrorMsgs(error);
-//     console.log(errorMessages)
-//     // res.status(404).render("user/login", { errorMessages });
-//   }
-// });
+    res.cookie("token", token, { httpOnly: true });
+    res.status(201).json({ message: "User logged in successfully." });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
 
-// router.get("/logout", (req, res) => {
-//   res.clearCookie("token");
-//   // res.redirect("/");
-// });
+router.get("/logout", (req, res) => {
+  res.clearCookie("token");
+  res.status(201).json({ message: "Logout succcesful" });
+});
 
 module.exports = router;

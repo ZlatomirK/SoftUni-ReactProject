@@ -1,9 +1,24 @@
+import { useContext } from "react";
+import useForm from "../../hooks/useForm";
+import AuthContext from "../../contexts/authContext";
+
+const LoginFormKyes = {
+  Email: 'email',
+  Password: 'password',
+};
+
 const Login = () => {
+  const { loginSubmitHandler } = useContext(AuthContext);
+  const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+      [LoginFormKyes.Email]: '',
+      [LoginFormKyes.Password]: '',
+  });
+
   return (
     <main>
       <section id="login-page">
         <div className="loginSection">
-          <form method="POST" className="loginForm">
+          <form className="loginForm" onSubmit={onSubmit}>
             <h2>Login</h2>
             <ul className="noBullet">
               <li>
@@ -13,7 +28,8 @@ const Login = () => {
                   className="inputFields"
                   id="email"
                   name="email"
-                  placeholder="peter@abv.bg"
+                  onChange={onChange}
+                  values={values[LoginFormKyes.Email]}
                 />
               </li>
               <li>
@@ -23,12 +39,13 @@ const Login = () => {
                   className="inputFields"
                   id="password"
                   name="password"
-                  placeholder="*******"
+                  onChange={onChange}
+                  values={values[LoginFormKyes.Password]}
                 />
               </li>
 
               <li id="center-btn">
-                <button id="login-btn">Login</button>
+                <button id="login-btn" type="submit">Login</button>
               </li>
             </ul>
           </form>
