@@ -31,7 +31,7 @@ router.post("/register", async (req, res) => {
     res.cookie("token", token, { httpOnly: true });
 
     // Send a success response
-    res.status(201).json({ message: "User registered successfully." });
+    res.status(201).json({ message: "User registered successfully.", token });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal Server Error" });
@@ -44,8 +44,7 @@ router.post("/login", async (req, res) => {
   try {
     const token = await userService.login(email, password);
 
-    res.cookie("token", token, { httpOnly: true });
-    res.status(201).json({ message: "User logged in successfully." });
+    res.status(201).json({ message: "User logged in successfully.", token });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal Server Error" });

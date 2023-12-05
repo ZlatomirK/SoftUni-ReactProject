@@ -1,6 +1,6 @@
-// const Creature = require("../models/Creature");
+const Post = require("../models/Post");
 
-// exports.create = (createData) => Creature.create(createData);
+exports.create = (createData) => Post.create(createData);
 
 // exports.getAll = () => Creature.find().lean();
 

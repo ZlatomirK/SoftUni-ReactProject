@@ -2,6 +2,7 @@ const router = require("express").Router();
 const postService = require("../services/postService");
 // const { isAuth } = require("../middlewares/authMiddleware");
 const { extractErrorMsgs } = require("../utils/errorHandler");
+const jwt = require("jsonwebtoken");
 
 // router.get("/all", async (req, res) => {
 //   const creatures = await creatureService.getAll();
@@ -10,26 +11,25 @@ const { extractErrorMsgs } = require("../utils/errorHandler");
 // });
 
 router.post("/create", async (req, res) => {
-  const { title, topic, text } = req.body;
-  console.log(req.user);
-  // const payload = {
-  //   name,
-  //   species,
-  //   skinColor,
-  //   eyeColor,
-  //   image,
-  //   description,
-  //   owner: req.user,
-  // };
+  const { title, topic, text, token } = req.body;
+  const owner = jwt.decode(token);
+  // console.log(ownerId);
 
-  // try {
-  //   await creatureService.create(payload);
+  const payload = {
+    title,
+    topic,
+    text,
+    owner,
+  };
 
-  //   res.redirect("/posts/all");
-  // } catch (error) {
-  //   const errorMessages = extractErrorMsgs(error);
-  //   res.status(404).render("post/create", { errorMessages });
-  // }
+  try {
+    await postService.create(payload);
+
+    // res.redirect("/posts/all");
+  } catch (error) {
+    const errorMessages = extractErrorMsgs(error);
+    // res.status(404).render("post/create", { errorMessages });
+  }
 });
 
 // router.get("/profile", isAuth, async (req, res) => {

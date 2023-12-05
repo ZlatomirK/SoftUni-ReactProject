@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import * as postService from "../../services/postService";
+import Cookies from 'js-cookie';
 
 const Create = () => {
   const navigate = useNavigate();
@@ -9,9 +10,10 @@ const Create = () => {
     e.preventDefault();
 
     const postData = Object.fromEntries(new FormData(e.currentTarget));
+    postData.token = Cookies.get('token')
 
     try {
-      await postService.create(postData);
+      postService.create(postData);
 
       navigate("/posts");
     } catch (err) {
