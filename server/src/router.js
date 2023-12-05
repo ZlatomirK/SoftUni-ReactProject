@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const userController = require("./controllers/userController");
+const postController = require("./controllers/postController");
 // const homeController = require("./controllers/homeController");
-// const postController = require("./controllers/postController");
 
 router.use("/users", userController);
+router.use("/posts", postController);
 // router.use(homeController);
-// router.use("/posts", postController);
 
 module.exports = router;
