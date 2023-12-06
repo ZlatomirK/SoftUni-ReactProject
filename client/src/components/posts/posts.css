@@ -1,0 +1,14 @@
+.postsMain {
+  display: flex;
+  height: 800px;
+  justify-content: flex-start;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.component {
+  max-width: 100%;
+}

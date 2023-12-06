@@ -4,11 +4,12 @@ const postService = require("../services/postService");
 const { extractErrorMsgs } = require("../utils/errorHandler");
 const jwt = require("jsonwebtoken");
 
-// router.get("/all", async (req, res) => {
-//   const creatures = await creatureService.getAll();
+router.get("/", async (req, res) => {
+  const posts = await postService.getAll();
+  // console.log(posts)
 
-//   res.render("post/all-posts", { creatures });
-// });
+  res.status(201).json(posts);
+});
 
 router.post("/create", async (req, res) => {
   const { title, topic, text, token } = req.body;

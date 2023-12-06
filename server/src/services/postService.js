@@ -2,7 +2,7 @@ const Post = require("../models/Post");
 
 exports.create = (createData) => Post.create(createData);
 
-// exports.getAll = () => Creature.find().lean();
+exports.getAll = () => Post.find().lean();
 
 // exports.getSingleCreature = (creatureId) =>
 //   Creature.findById(creatureId).populate("owner").populate("votes");
