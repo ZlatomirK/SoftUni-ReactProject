@@ -33,31 +33,19 @@ router.post("/create", async (req, res) => {
   }
 });
 
+router.get("/:postId", async (req, res) => {
+  const { postId } = req.params;
+
+  const post = await postService.getSinglePost(postId).lean();
+
+  res.status(201).json(post);
+});
 // router.get("/profile", isAuth, async (req, res) => {
 //   const { user } = req;
 
 //   const myCreatures = await creatureService.getMyCreatures(user?._id).lean();
 
 //   res.render("post/profile", { myCreatures });
-// });
-
-// router.get("/:creatureId/details", async (req, res) => {
-//   const { creatureId } = req.params;
-
-//   const creature = await creatureService.getSingleCreature(creatureId).lean();
-
-//   const { user } = req;
-//   const { owner } = creature;
-//   const isOwner = user?._id === owner._id.toString();
-//   const hasVoted = creature.votes?.some((v) => v?._id.toString() === user?._id);
-//   const joinedEmailsOfVoters = creature.votes.map((v) => v.email).join(", ");
-
-//   res.render("post/details", {
-//     creature,
-//     isOwner,
-//     hasVoted,
-//     joinedEmailsOfVoters,
-//   });
 // });
 
 // router.get("/:creatureId/edit", isAuth, async (req, res) => {

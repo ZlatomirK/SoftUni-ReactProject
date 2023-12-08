@@ -4,8 +4,8 @@ exports.create = (createData) => Post.create(createData);
 
 exports.getAll = () => Post.find().lean();
 
-// exports.getSingleCreature = (creatureId) =>
-//   Creature.findById(creatureId).populate("owner").populate("votes");
+exports.getSinglePost = (postId) =>
+  Post.findById(postId).populate("owner")//.populate("votes");
 
 // exports.update = (creatureId, creatureData) =>
 //   Creature.findByIdAndUpdate(creatureId, creatureData, { runValidators: true });
