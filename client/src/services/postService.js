@@ -26,4 +26,4 @@ export const edit = async (postId, postData) => {
   return result;
 };
 
-export const remove = async (postId) => request.remove(`${baseUrl}/${postId}`);
+export const remove = async (postId) => request.get(`${baseUrl}/${postId}/delete`);

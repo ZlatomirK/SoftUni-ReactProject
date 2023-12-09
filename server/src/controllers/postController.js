@@ -80,13 +80,11 @@ router.get("/:postId", async (req, res) => {
 //   }
 // });
 
-// router.get("/:creatureId/delete", isAuth, async (req, res) => {
-//   const { creatureId } = req.params;
+router.get("/:postId/delete", async (req, res) => {
+  const { postId } = req.params;
 
-//   await creatureService.delete(creatureId);
-
-//   res.redirect("/posts/all");
-// });
+  await postService.delete(postId);
+});
 
 // router.get("/:creatureId/vote", isAuth, async (req, res) => {
 //   const { creatureId } = req.params;

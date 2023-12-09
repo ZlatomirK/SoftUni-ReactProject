@@ -42,7 +42,28 @@ const request = {
     }
   },
 
-  // Add other request methods (e.g., put, delete) as needed
+  delete: async (url) => {
+    try {
+      const response = await fetch(url, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      return response.json();
+    } catch (error) {
+      console.error('Error:', error);
+      throw error;
+    }
+  },
+
+  // You can add other request methods (e.g., put) as needed
 };
 
 export default request;

@@ -20,6 +20,11 @@ export const register = (userName, email, password, confirmPassword) => {
   return response;
 };
 
+export const decodeToken = (token) => {
+  const response = request.post(`${baseUrl}/decode`, { token });
+  return response;
+};
+
 export const logout = () => {
   request.get(`${baseUrl}/logout`);
 };

@@ -2,6 +2,7 @@ const router = require("express").Router();
 const userService = require("../services/userService");
 const { extractErrorMsgs } = require("../utils/errorHandler");
 const User = require("../models/User");
+const jwt = require("jsonwebtoken");
 
 router.post("/register", async (req, res) => {
   try {
@@ -27,7 +28,12 @@ router.post("/register", async (req, res) => {
         .json({ message: "User with this email already exists." });
     }
 
-    const token = await userService.register({ userName, email, password, confirmPassword });
+    const token = await userService.register({
+      userName,
+      email,
+      password,
+      confirmPassword,
+    });
     res.cookie("token", token, { httpOnly: true });
 
     // Send a success response
@@ -54,6 +60,12 @@ router.post("/login", async (req, res) => {
 router.get("/logout", (req, res) => {
   res.clearCookie("token");
   res.status(201).json({ message: "Logout succcesful" });
+});
+
+router.post("/decode", (req, res) => {
+  const { token } = req.body;
+  const decodedToken = jwt.decode(token);
+  res.status(201).json(decodedToken);
 });
 
 module.exports = router;

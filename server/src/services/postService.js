@@ -10,7 +10,7 @@ exports.getSinglePost = (postId) =>
 // exports.update = (creatureId, creatureData) =>
 //   Creature.findByIdAndUpdate(creatureId, creatureData, { runValidators: true });
 
-// exports.delete = (creatureId) => Creature.findByIdAndDelete(creatureId);
+exports.delete = (postId) => Post.findByIdAndDelete(postId);
 
 // exports.getMyCreatures = (ownerId) =>
 //   Creature.find({ owner: ownerId }).populate("owner");
