@@ -12,6 +12,7 @@ import { Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/authContext";
 import Logout from "./components/logout/Logout";
 import Details from "./components/details/Details";
+import Edit from "./components/edit/Edit";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/posts/:postId" element={<Details />} />
         <Route path="*" element={<NotFound />} />
         <Route element={<AuthGuard />}>
+          <Route path="/posts/:postId/edit" element={<Edit />} />
           <Route path="/posts/create" element={<Create />} />
           <Route path="/logout" element={<Logout />} />
         </Route>

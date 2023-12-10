@@ -48,39 +48,20 @@ router.get("/:postId", async (req, res) => {
 //   res.render("post/profile", { myCreatures });
 // });
 
-// router.get("/:creatureId/edit", isAuth, async (req, res) => {
-//   const { creatureId } = req.params;
+router.put("/:postId/edit", async (req, res) => {
+  const { postId } = req.params;
 
-//   const creature = await creatureService.getSingleCreature(creatureId).lean();
+  const { title, topic, text, token } = req.body;
+  const owner = jwt.decode(token);
+  const payload = { title, topic, text, owner };
+  try {
+    await postService.update(postId, payload);
+  } catch (error) {
+    const errorMessages = extractErrorMsgs(error);
+  }
+});
 
-//   res.render("post/edit", { creature });
-// });
-
-// router.post("/:creatureId/edit", isAuth, async (req, res) => {
-//   const { creatureId } = req.params;
-
-//   const { name, species, skinColor, eyeColor, image, description } = req.body;
-//   const payload = {
-//     name,
-//     species,
-//     skinColor,
-//     eyeColor,
-//     image,
-//     description,
-//     owner: req.user,
-//   };
-//   try {
-//     await creatureService.update(creatureId, payload);
-
-//     res.redirect(`/posts/${creatureId}/details`);
-//   } catch (error) {
-//     const errorMessages = extractErrorMsgs(error);
-//     const creature = await creatureService.getSingleCreature(creatureId).lean();
-//     res.status(404).render("post/edit", { creature, errorMessages });
-//   }
-// });
-
-router.get("/:postId/delete", async (req, res) => {
+router.delete("/:postId", async (req, res) => {
   const { postId } = req.params;
 
   await postService.delete(postId);

@@ -4,6 +4,8 @@ import Cookies from "js-cookie";
 import * as authService from "../../services/authService";
 import * as postService from "../../services/postService";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 const Details = () => {
   const { postId } = useParams();
@@ -59,7 +61,7 @@ const Details = () => {
       <p>{post.text}</p>
       {isOwner && (
         <div>
-          <button>Edit</button>
+          <Link to={`/posts/${postId}/edit`}>Edit</Link>
           <button onClick={deleteHandler}>Delete</button>
         </div>
       )}

@@ -21,9 +21,9 @@ export const create = async (postData) => {
 };
 
 export const edit = async (postId, postData) => {
-  const result = await request.put(`${baseUrl}/${postId}`, postData);
+  const result = await request.put(`${baseUrl}/${postId}/edit`, postData);
 
   return result;
 };
 
-export const remove = async (postId) => request.get(`${baseUrl}/${postId}/delete`);
+export const remove = async (postId) => request.delete(`${baseUrl}/${postId}`);

@@ -7,8 +7,8 @@ exports.getAll = () => Post.find().lean();
 exports.getSinglePost = (postId) =>
   Post.findById(postId).populate("owner")//.populate("votes");
 
-// exports.update = (creatureId, creatureData) =>
-//   Creature.findByIdAndUpdate(creatureId, creatureData, { runValidators: true });
+exports.update = (postId, postData) =>
+  Post.findByIdAndUpdate(postId, postData, { runValidators: true });
 
 exports.delete = (postId) => Post.findByIdAndDelete(postId);
 
