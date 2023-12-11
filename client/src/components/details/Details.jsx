@@ -27,7 +27,6 @@ const Details = () => {
             .then((data) => {
               setDecodedToken(data);
 
-              // Check if the post owner is the same as the decoded token's ID
               if (postData.owner._id === data._id) {
                 setIsOwner(true);
               }

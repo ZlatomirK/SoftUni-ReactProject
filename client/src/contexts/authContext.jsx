@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
 
   const checkAuthentication = () => {
     const token = Cookies.get("token");
-    return !!token; // Modify this based on your authentication logic
+    return !!token;
   };
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
 
   const logoutHandler = async () => {
     try {
-      await authService.logout(); // Make a request to your logout endpoint
+      await authService.logout();
       setAuthenticated(false);
     } catch (error) {
       console.error("Logout failed:", error);

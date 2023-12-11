@@ -17,7 +17,7 @@ const Create = () => {
 
       navigate("/posts");
     } catch (err) {
-      // Error notification
+
       console.log(err);
     }
   };

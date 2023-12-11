@@ -8,19 +8,16 @@ router.post("/register", async (req, res) => {
   try {
     const { userName, email, password, confirmPassword } = req.body;
 
-    // Validate if required fields are provided
     if (!userName || !email || !password || !confirmPassword) {
       return res
         .status(400)
         .json({ message: "Please provide all required fields." });
     }
 
-    // Validate if passwords match
     if (password !== confirmPassword) {
       return res.status(400).json({ message: "Passwords do not match." });
     }
 
-    // Check if the user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res
@@ -36,7 +33,6 @@ router.post("/register", async (req, res) => {
     });
     res.cookie("token", token, { httpOnly: true });
 
-    // Send a success response
     res.status(201).json({ message: "User registered successfully.", token });
   } catch (error) {
     console.error(error);

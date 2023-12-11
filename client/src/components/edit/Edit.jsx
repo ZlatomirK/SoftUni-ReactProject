@@ -27,7 +27,7 @@ const Edit = () => {
     try {
       await postService.edit(postId, postData).then(navigate("/posts"));
     } catch (err) {
-      // Error notification
+
       console.log(err);
     }
   };
