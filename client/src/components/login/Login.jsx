@@ -16,9 +16,9 @@ const Login = () => {
 
   return (
     <main>
-      <section id="login-page">
-        <div className="loginSection">
-          <form className="loginForm" onSubmit={onSubmit}>
+      <section>
+        <div>
+          <form onSubmit={onSubmit}>
             <h2>Login</h2>
             <ul className="noBullet">
               <li>

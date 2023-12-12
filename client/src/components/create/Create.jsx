@@ -24,9 +24,9 @@ const Create = () => {
 
   return (
     <main>
-      <section id="create-page">
-        <div className="createSection">
-          <form className="createForm" onSubmit={createPostSubmitHandler}>
+      <section>
+        <div>
+          <form onSubmit={createPostSubmitHandler}>
             <h2>Create Post</h2>
             <ul className="noBullet">
               <li>

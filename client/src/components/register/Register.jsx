@@ -23,7 +23,7 @@ const Register = () => {
 
   return (
     <main>
-      <form className="signupForm" onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>
         <h2>Sign Up</h2>
         <ul className="noBullet">
           <li>

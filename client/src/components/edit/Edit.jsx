@@ -41,9 +41,9 @@ const Edit = () => {
 
   return (
     <main>
-      <section id="create-page">
-        <div className="createSection">
-          <form className="createForm" onSubmit={editPostSubmitHandler}>
+      <section>
+        <div>
+          <form onSubmit={editPostSubmitHandler}>
             <h2>Edit Post</h2>
             <ul className="noBullet">
               <li>
