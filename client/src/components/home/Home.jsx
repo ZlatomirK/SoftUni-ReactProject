@@ -2,10 +2,10 @@ const Home = () => {
   return (
     <main>
       <h1>
-        🌟 Welcome to [Your Blog Name] - Your Gateway to Insightful Content! 🌟
+        🌟 Welcome to BlogBurst - Your Gateway to Insightful Content! 🌟
       </h1>
       <p>
-        At [Your Blog Name], we believe in the power of words to inspire,
+        At BlogBurst, we believe in the power of words to inspire,
         inform, and connect. Our blog is a digital haven where ideas flourish,
         stories come to life, and knowledge finds its voice. Whether you&aposre
         an avid reader, a curious mind, or someone seeking a moment of
@@ -23,7 +23,7 @@ const Home = () => {
         🌐 A Community of Voices: We take pride in being more than just a blog;
         we&aposre a community of passionate writers, storytellers, and experts.
         Our diverse pool of contributors ensures a rich tapestry of
-        perspectives, making [Your Blog Name] a hub of insights and creativity.
+        perspectives, making BlogBurst a hub of insights and creativity.
       </p>
       <p>
         🚀 Stay Updated: Don&apost miss a beat! Subscribe to our newsletter for
@@ -33,12 +33,12 @@ const Home = () => {
       </p>
       <p>
         Ready to embark on a journey of words? Start exploring, start
-        discovering. The adventure begins here at [Your Blog Name].
+        discovering. The adventure begins here at BlogBurst.
       </p>
       <h2>
         Dive into Knowledge, Immerse in Stories, and Ignite Your Imagination!
       </h2>
-      <p>Happy Reading, The [Your Blog Name] Team</p>
+      <p>Happy Reading, The BlogBurst Team</p>
     </main>
   );
 };
