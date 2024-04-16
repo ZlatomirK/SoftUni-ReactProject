@@ -25,11 +25,11 @@ export const AuthProvider = ({ children }) => {
       .login(values.email, values.password)
       .then((result) => {
         document.cookie = `token=${result.token}; path=/;`;
+        setAuthenticated(true);
       })
       .catch((error) => {
         console.log("Login failed:", error);
       });
-    setAuthenticated(true);
 
     navigate(Path.Home);
   };
