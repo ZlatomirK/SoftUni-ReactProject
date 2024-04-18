@@ -26,24 +26,27 @@ export const AuthProvider = ({ children }) => {
       .then((result) => {
         document.cookie = `token=${result.token}; path=/;`;
         setAuthenticated(true);
+        navigate(Path.Home);
       })
       .catch((error) => {
         console.log("Login failed:", error);
       });
-
-    navigate(Path.Home);
   };
 
   const registerSubmitHandler = (values) => {
-    authService.register(
-      values.userName,
-      values.email,
-      values.password,
-      values.confirmPassword
-    );
-    setAuthenticated(true);
-
-    navigate(Path.Home);
+    authService
+      .register(
+        values.userName,
+        values.email,
+        values.password,
+        values.confirmPassword
+      )
+      .then(() => {
+        navigate(Path.Home);
+      })
+      .catch((error) => {
+        console.log("Register failed:", error);
+      });
   };
 
   const logoutHandler = async () => {

@@ -8,32 +8,32 @@ router.post("/register", async (req, res) => {
   try {
     const { userName, email, password, confirmPassword } = req.body;
 
-    if (!userName || !email || !password || !confirmPassword) {
-      return res
-        .status(400)
-        .json({ message: "Please provide all required fields." });
-    }
+    //these dont work
+    // if (!userName || !email || !password || !confirmPassword) {
+    //   return res
+    //     .status(400)
+    //     .json({ message: "Please provide all required fields." });
+    // }
 
-    if (password !== confirmPassword) {
-      return res.status(400).json({ message: "Passwords do not match." });
-    }
+    // if (password !== confirmPassword) {
+    //   return res.status(400).json({ message: "Passwords do not match." });
+    // }
 
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res
-        .status(400)
-        .json({ message: "User with this email already exists." });
-    }
+    // const existingUser = await User.findOne({ email });
+    // if (existingUser) {
+    //   return res
+    //     .status(400)
+    //     .json({ message: "User with this email already exists." });
+    // }
 
-    const token = await userService.register({
+    const registerSuccess = await userService.register({
       userName,
       email,
       password,
       confirmPassword,
     });
-    res.cookie("token", token, { httpOnly: true });
 
-    res.status(201).json({ message: "User registered successfully.", token });
+    res.status(201).json({ message: "User registered successfully." });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal Server Error" });

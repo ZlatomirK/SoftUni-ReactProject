@@ -25,6 +25,12 @@ userSchema.path("email").validate(function (emailInput) {
   return !!email;
 }, "Email already exists!");
 
+//doesnt work
+// userSchema.path("userName").validate(function (userNameInput) {
+//   const userName = mongoose.model("User").findOne({ userName: userNameInput });
+//   return !!userName;
+// }, "userName already exists!");
+
 userSchema.pre("save", async function () {
   const hash = await bcrypt.hash(this.password, 10);
   this.password = hash;

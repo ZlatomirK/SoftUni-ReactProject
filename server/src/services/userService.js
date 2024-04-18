@@ -4,13 +4,14 @@ const jwt = require("../lib/jwt");
 const { SECRET } = require("../constants");
 
 exports.register = async (userData) => {
-  const user = User.create(userData);
-
-  const payload = { _id: user._id, email: user.email };
-
-  const token = await jwt.sign(payload, SECRET, { expiresIn: "2d" });
-
-  return token;
+  User.create(userData)
+    .then(() => {
+      return true;
+    })
+    .catch((error) => {
+      console.log(error);
+      return false;
+    });
 };
 
 exports.login = async (email, password) => {
